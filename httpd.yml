@@ -1,0 +1,18 @@
+---
+- name: Installing httpd Package
+  hosts: Subhranil_Ohio_1
+  become: True
+  become_method: sudo
+  become_user: root
+  gather_facts: False
+  tasks:
+    - name: Installing HTTPD on AWS Server
+      package:
+          name: httpd
+          state: installed
+    - name: Configure
+      copy: src=./index.html dest=/var/www/html/
+    - name: Start the Service
+      service:
+          name: httpd
+          state: restarted
