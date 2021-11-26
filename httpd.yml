@@ -12,6 +12,10 @@
           state: installed
     - name: Configure
       copy: src=./index.html dest=/var/www/html/
+    - name: Create user
+      user:
+          name: SubhranilBB
+          state: present
     - name: Start the Service
       service:
           name: httpd
